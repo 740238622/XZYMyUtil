@@ -344,4 +344,112 @@
     return[scan scanFloat:&val] && [scan isAtEnd];
 }
 
+#pragma mark - 手机号正则
+- (BOOL)validateMobile:(NSString *)mobileNum
+{
+    /**
+     * 手机号码
+     * 移动：134[0-8],135,136,137,138,139,150,151,157,158,159,182,183,187,188
+     * 联通：130,131,132,152,155,156,185,186
+     * 电信：133,1349,153,180,189
+     */
+    NSString * MOBILE = @"^1(3[0-9]|5[0-35-9]|8[01235-9])\\d{8}$";
+    /**
+     10         * 中国移动：China Mobile
+     11         * 134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188
+     12         */
+    NSString * CM = @"^1(34[0-8]|(3[5-9]|5[017-9]|8[278])\\d)\\d{7}$";
+    /**
+     15         * 中国联通：China Unicom
+     16         * 130,131,132,152,155,156,185,186
+     17         */
+    NSString * CU = @"^1(3[0-2]|5[256]|8[56])\\d{8}$";
+    /**
+     20         * 中国电信：China Telecom
+     21         * 133,1349,153,180,189
+     22         */
+    NSString * CT = @"^1((33|53|8[09])[0-9]|349)\\d{7}$";
+    /**
+     25         * 大陆地区固话及小灵通
+     26         * 区号：010,020,021,022,023,024,025,027,028,029
+     27         * 号码：七位或八位
+     28         */
+    // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
+    
+    //虚拟运行商号段
+    NSString *VT=@"^17\\d{9}";
+    
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
+    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
+    NSPredicate *regextestcu = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU];
+    NSPredicate *regextestct = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT];
+    NSPredicate *regextestvt=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",VT];
+    
+    if (([regextestmobile evaluateWithObject:mobileNum] == YES)
+        || ([regextestcm evaluateWithObject:mobileNum] == YES)
+        || ([regextestct evaluateWithObject:mobileNum] == YES)
+        || ([regextestcu evaluateWithObject:mobileNum] == YES)
+        ||([regextestvt evaluateWithObject:mobileNum]==YES))
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
+#pragma mark - 查看应用程序版本
+- (NSString*)getVersion
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    return version;
+}
+
+#pragma mark - 判断对象是否为空
+- (BOOL)isEmpty:(id)obj
+{
+    if(obj == nil)
+    {
+        return YES;
+    }
+    else if([obj isKindOfClass:[NSString class]])
+    {
+        NSString *objStr = (NSString *)obj;
+        if ([objStr isEqual:@""] || [trimStringAllBlank(objStr) isEqual:@"0"])
+        {
+            return YES;
+        }
+        if(objStr.length == 0)
+        {
+            return YES;
+        }
+    }
+    else if([obj isKindOfClass:[NSNumber class]])
+    {
+        NSNumber *objNum = (NSNumber *)obj;
+        if([objNum intValue] == 0)
+        {
+            return YES;
+        }
+    }
+    else if([obj isKindOfClass:[NSNull class]])
+    {
+        return YES;
+    }
+    else
+    {
+    }
+    return NO;
+}
+
+/**去除所有的空格*/
+NSString *trimStringAllBlank(NSString *oldString)
+{
+    NSString * newString = [oldString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    newString = [newString stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return newString;
+}
+
 @end

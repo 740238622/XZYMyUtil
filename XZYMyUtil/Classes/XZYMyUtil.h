@@ -226,4 +226,30 @@
  */
 + (BOOL)isPureFloat:(NSString*)string;
 
+#pragma mark - 手机号正则
+/**
+ 手机号正则
+
+ @param mobileNum 手机号码
+ @return return value description
+ */
+- (BOOL)validateMobile:(NSString *)mobileNum;
+
+#pragma mark - 查看应用程序版本
+/**
+ 查看应用程序版本
+
+ @return return value description
+ */
+- (NSString*)getVersion;
+
+#pragma mark - 判断对象是否为空
+/**
+ 判断对象是否为空
+
+ @param obj id
+ @return return value description
+ */
+- (BOOL)isEmpty:(id)obj;
+
 @end
