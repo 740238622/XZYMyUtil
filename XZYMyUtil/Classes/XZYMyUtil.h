@@ -11,6 +11,7 @@
 
 @interface XZYMyUtil : NSObject
 
+#pragma mark - 1.0.0
 #pragma mark - UIView
 /**
  添加view
@@ -164,7 +165,7 @@
  @param secondDate 第二个日期
  @return return value description
  */
-+ (BOOL)JudgeTwoDate:(NSString*)firstDate secondDate:(NSString*)secondDate;
++ (BOOL)JudgeTwoDate:(NSString *)firstDate secondDate:(NSString *)secondDate;
 #pragma mark - 比较2个时间的大小
 /**
  比较2个时间的大小
@@ -173,7 +174,7 @@
  @param secondDate 第二个时间
  @return return value description
  */
-+ (BOOL)JudgeTwoTime:(NSString*)firstDate secondDate:(NSString*)secondDate;
++ (BOOL)JudgeTwoTime:(NSString *)firstDate secondDate:(NSString *)secondDate;
 
 #pragma mark - 获取现在日期
 /**
@@ -215,7 +216,7 @@
  @param string 字符串
  @return return value description
  */
-+ (BOOL)isPureInt:(NSString*)string;
++ (BOOL)isPureInt:(NSString *)string;
 
 #pragma mark - 判断字符串是否为浮点型
 /**
@@ -224,8 +225,9 @@
  @param string 字符串
  @return return value description
  */
-+ (BOOL)isPureFloat:(NSString*)string;
++ (BOOL)isPureFloat:(NSString *)string;
 
+#pragma mark - 1.0.1
 #pragma mark - 手机号正则
 /**
  手机号正则
@@ -233,7 +235,7 @@
  @param mobileNum 手机号码
  @return return value description
  */
-- (BOOL)validateMobile:(NSString *)mobileNum;
++ (BOOL)validateMobile:(NSString *)mobileNum;
 
 #pragma mark - 查看应用程序版本
 /**
@@ -241,15 +243,14 @@
 
  @return return value description
  */
-- (NSString*)getVersion;
-
-#pragma mark - 判断对象是否为空
++ (NSString *)getVersion;
+#pragma mark - 查看手机系统版本
 /**
- 判断对象是否为空
+ 查看手机系统版本
 
- @param obj id
  @return return value description
  */
-- (BOOL)isEmpty:(id)obj;
++ (NSString *)getSystemVersion;
+
 
 @end
