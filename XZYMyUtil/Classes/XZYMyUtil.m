@@ -66,14 +66,14 @@
 }
 
 #pragma mark - UIButton
-+ (UIButton *)buttonWithRect:(CGRect)rect backgroundPhoto:(NSString*)photo hilPhoto:(NSString*)hphoto title:(NSString *)title select:(SEL)sel tag:(NSInteger)tag textColor:(UIColor *)textColor fontSiez:(CGFloat)font view:(UIView *)viewA
++ (UIButton *)buttonWithRect:(CGRect)rect backgroundPhoto:(NSString*)photo hilPhoto:(NSString*)hphoto title:(NSString *)title target:(id)target select:(SEL)sel tag:(NSInteger)tag textColor:(UIColor *)textColor fontSize:(CGFloat)font view:(UIView *)viewA
 {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = rect;
     [btn setBackgroundImage:[UIImage imageNamed:photo] forState:UIControlStateNormal];
     [btn setBackgroundImage:[UIImage imageNamed:hphoto] forState:UIControlStateHighlighted];
     [btn setTitle:title forState:UIControlStateNormal];
-    [btn addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:target action:sel forControlEvents:UIControlEventTouchUpInside];
     btn.tag = tag;
     [btn setTitleColor:textColor forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:font];

@@ -75,7 +75,7 @@
  @param viewA 添加到的view
  @return return value description
  */
-+ (UIButton *)buttonWithRect:(CGRect)rect backgroundPhoto:(NSString*)photo hilPhoto:(NSString*)hphoto title:(NSString *)title select:(SEL)sel tag:(NSInteger)tag textColor:(UIColor *)textColor fontSiez:(CGFloat)font view:(UIView *)viewA;
++ (UIButton *)buttonWithRect:(CGRect)rect backgroundPhoto:(NSString*)photo hilPhoto:(NSString*)hphoto title:(NSString *)title target:(id)target select:(SEL)sel tag:(NSInteger)tag textColor:(UIColor *)textColor fontSize:(CGFloat)font view:(UIView *)viewA;
 
 #pragma mark - UITextField
 /**
