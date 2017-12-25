@@ -60,13 +60,14 @@
     label.textAlignment = alignment;
     label.textColor = color;
     label.tag = tag;
+    label.numberOfLines = 0;
     [viewA addSubview:label];
     
     return label;
 }
 
 #pragma mark - UIButton
-+ (UIButton *)buttonWithRect:(CGRect)rect backgroundPhoto:(NSString*)photo hilPhoto:(NSString*)hphoto title:(NSString *)title target:(id)target select:(SEL)sel tag:(NSInteger)tag textColor:(UIColor *)textColor fontSize:(CGFloat)font view:(UIView *)viewA
++ (UIButton *)buttonWithRect:(CGRect)rect backgroundPhoto:(NSString*)photo hilPhoto:(NSString*)hphoto title:(NSString *)title target:(id)target select:(SEL)sel tag:(NSInteger)tag textColor:(UIColor *)textColor fontSize:(CGFloat)font backgroundColor:(UIColor *)backColor view:(UIView *)viewA
 {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = rect;
@@ -77,7 +78,7 @@
     btn.tag = tag;
     [btn setTitleColor:textColor forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:font];
-    
+    [btn setBackgroundColor:backColor];
     [viewA addSubview:btn];
     return btn;
 }
@@ -95,8 +96,8 @@
     textField.font = [UIFont systemFontOfSize:font];
     
     [textField setBackgroundColor:[UIColor clearColor]];
-    textField.autocapitalizationType=UITextAutocapitalizationTypeNone;
-    textField.borderStyle = UITextBorderStyleLine;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    textField.borderStyle = UITextBorderStyleNone;
     
     //点击textfield上移
     [textField addTarget:self action:@selector(textFieldUp) forControlEvents:UIControlEventEditingDidBegin];
