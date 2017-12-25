@@ -252,5 +252,8 @@
  */
 + (NSString *)getSystemVersion;
 
+#pragma mark - 1.0.4
+#pragma marl - UIImageView
++ (UIImageView *)imageViewWithImage:(NSString *)image rect:(CGRect)rect tag:(int)tag viewA:(UIView *)viewA;
 
 @end

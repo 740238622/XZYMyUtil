@@ -414,4 +414,16 @@
     return [[UIDevice currentDevice] systemVersion];
 }
 
+#pragma mark - 1.0.4
+#pragma marl - UIImageView
++ (UIImageView *)imageViewWithImage:(NSString *)image rect:(CGRect)rect tag:(int)tag viewA:(UIView *)viewA
+{
+    UIImageView *imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:image]];
+    imgv.frame = rect;
+    imgv.tag = tag;
+    [viewA addSubview:imgv];
+    
+    return imgv;
+}
+
 @end
