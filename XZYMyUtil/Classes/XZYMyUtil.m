@@ -69,6 +69,12 @@
 #pragma mark - UIButton
 + (UIButton *)buttonWithRect:(CGRect)rect backgroundPhoto:(NSString*)photo hilPhoto:(NSString*)hphoto title:(NSString *)title target:(id)target select:(SEL)sel tag:(NSInteger)tag textColor:(UIColor *)textColor fontSize:(CGFloat)font backgroundColor:(UIColor *)backColor view:(UIView *)viewA
 {
+    if ([photo isEqualToString:@""]) {
+        photo = @"为了防止控制台出现垃圾提示，在这做判断";
+    }
+    if ([hphoto isEqualToString:@""]) {
+        hphoto = @"为了防止控制台出现垃圾提示，在这做判断";
+    }
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = rect;
     [btn setBackgroundImage:[UIImage imageNamed:photo] forState:UIControlStateNormal];
@@ -419,6 +425,9 @@
 #pragma marl - UIImageView
 + (UIImageView *)imageViewWithImage:(NSString *)image rect:(CGRect)rect tag:(int)tag viewA:(UIView *)viewA
 {
+    if ([image isEqualToString:@""]) {
+        image = @"为了防止控制台出现垃圾提示，在这做判断";
+    }
     UIImageView *imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:image]];
     imgv.frame = rect;
     imgv.tag = tag;
